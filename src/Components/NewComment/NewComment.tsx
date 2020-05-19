@@ -4,7 +4,7 @@ import { CommentsStore } from "../../Stores/CommentsStore";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-const NewComment: FC<{ comment?: CommentEntity }> = ({}) => {
+const NewComment: FC<{ comment?: CommentEntity }> = () => {
   const [comment, setComment] = useState("");
   const [author, setAuthor] = useState("");
   const [date, setDate] = useState(new Date());
@@ -19,7 +19,7 @@ const NewComment: FC<{ comment?: CommentEntity }> = ({}) => {
 
   const onSubmit = () => {
     CommentsStore.push({ author: author, comment: comment, date: date });
-    console.error("onSubmit");
+    console.error("onSubmit", CommentsStore);
   };
 
   return (
@@ -28,7 +28,7 @@ const NewComment: FC<{ comment?: CommentEntity }> = ({}) => {
     >
       <TextField
         id="authorName"
-        label="write your name here..."
+        label="fill in your name..."
         variant="outlined"
         style={{
           marginTop: "3px",
